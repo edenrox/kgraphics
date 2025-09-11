@@ -11,7 +11,7 @@ data class ColorInt(val value: Int) {
         get() = (value shr 8) and 0xFF
 
     val blue: Int
-        get() = value AND 0xFF
+        get() = value and 0xFF
 
     companion object {
         val TRANSPARENT = ofRgba(0, 0, 0, 0)
