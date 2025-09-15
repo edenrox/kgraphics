@@ -32,7 +32,7 @@ fun main(args: Array<String>) {
     ImageWriter.write(buffer, outputFile)
 }
 
-fun FrameBuffer.drawLineSimple(p1: Vector2i, p2: Vector2i, color: ColorInt) {
+private fun FrameBuffer.drawLineSimple(p1: Vector2i, p2: Vector2i, color: ColorInt) {
     var t = 0f
     val dx = p2.x - p1.x
     val dy = p2.y - p1.y
