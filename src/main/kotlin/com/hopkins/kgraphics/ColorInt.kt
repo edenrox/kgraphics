@@ -1,5 +1,7 @@
 package com.hopkins.kgraphics
 
+import kotlin.random.Random
+
 data class ColorInt(val value: Int) {
     val alpha: Int
         get() = value shr 24 and 0xFF
@@ -29,6 +31,14 @@ data class ColorInt(val value: Int) {
                     ((green and 0xFF) shl 8) or
                     (blue and 0xFF)
             return ColorInt(value)
+        }
+
+        fun randomColor(): ColorInt {
+            val r = Random.nextInt(255)
+            val g = Random.nextInt(255)
+            val b = Random.nextInt(255)
+            val a = 255
+            return ofRgba(r, g, b, a)
         }
     }
 }
