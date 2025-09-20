@@ -63,4 +63,20 @@ class FrameBuffer(val width: Int, val height: Int) {
     fun drawLine(p0: Vector2i, p1: Vector2i, color: ColorInt) {
         drawLine(p0.x, p0.y, p1.x, p1.y, color.value)
     }
+
+    fun drawTriangle(t: Triangle, color: ColorInt) {
+        val bounds = t.bounds
+        val totalArea = t.signedArea
+
+        for (y in bounds.top .. bounds.bottom) {
+            for (x in bounds.left .. bounds.right) {
+                val alpha = Triangle.signedArea(x,y, t.p1.x, t.p1.y, t.p2.x, t.p2.y) / totalArea
+                val beta = Triangle.signedArea(x,y, t.p2.x, t.p2.y, t.p0.x, t.p0.y) / totalArea
+                val gamma = Triangle.signedArea(x,y, t.p0.x, t.p0.y, t.p1.x, t.p1.y) / totalArea
+                if (alpha >= 0f && beta >= 0f && gamma >= 0f) {
+                    setPixel(x, y, color.value)
+                }
+            }
+        }
+    }
 }
