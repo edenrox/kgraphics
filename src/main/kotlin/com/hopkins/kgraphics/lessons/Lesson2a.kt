@@ -13,6 +13,7 @@ import kotlin.math.roundToInt
 import kotlin.math.sin
 
 fun main() {
+    // Lesson 2a from: https://haqr.eu/tinyrenderer/rasterization/
     val width = 128;
     val height = 128;
     val buffer = FrameBuffer(width, height)
@@ -21,11 +22,9 @@ fun main() {
     val t2 = Triangle(120,35,90,5,45,110)
     val t3 = Triangle(115, 83, 80, 90, 85, 120)
 
-
     buffer.scanLineTriangle(t1, ColorInt.RED)
     buffer.scanLineTriangle(t2, ColorInt.WHITE)
     buffer.scanLineTriangle(t3, ColorInt.GREEN)
-
 
     if (false) {
         // For triangle rendering testing only
